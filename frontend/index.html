@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Processing UI</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <div>
+          <h1>Image Processing</h1>
+          <p class="subtitle">Upload an image, then track status and view the generated description.</p>
+        </div>
+        <div class="pill">
+          API: <span id="apiBase"></span>
+        </div>
+      </header>
+
+      <section class="card">
+        <h2>Upload</h2>
+        <form id="uploadForm" class="row" autocomplete="off">
+          <input id="fileInput" type="file" accept="image/png,image/jpeg,.jpg,.jpeg,.png" required />
+          <button id="uploadBtn" type="submit">Submit</button>
+        </form>
+        <p class="hint">Supported: PNG, JPG/JPEG.</p>
+        <div class="divider"></div>
+        <div class="row">
+          <label for="jobIdInput" class="label">Job ID</label>
+          <input id="jobIdInput" class="mono" type="text" placeholder="Paste a job_id here" />
+          <button id="pollBtn" type="button">Poll</button>
+          <button id="stopBtn" type="button" class="secondary" disabled>Stop</button>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="card">
+          <h2>Status</h2>
+          <div class="status">
+            <div class="statusDot" id="statusDot"></div>
+            <div>
+              <div class="statusText" id="statusText">idle</div>
+              <div class="small" id="statusMeta"></div>
+            </div>
+          </div>
+          <pre class="log" id="log"></pre>
+        </div>
+
+        <div class="card">
+          <h2>Result</h2>
+          <pre class="result mono" id="result">(no result yet)</pre>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span class="small">Tip: You can bookmark <span class="mono">/ui</span>.</span>
+      </footer>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
+
